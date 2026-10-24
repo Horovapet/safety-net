@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1c1c1b" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Safety net">
+<meta name="robots" content="noindex">
+<title>Our safety net</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='24' y='4' width='16' height='44' rx='8' fill='%23d9f2e8'/%3E%3Crect x='28' y='22' width='8' height='26' fill='%231D9E75'/%3E%3Ccircle cx='32' cy='50' r='11' fill='%231D9E75'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#f7f6f2;--card:#ffffff;--soft:#f1efe8;--text:#1f1e1c;--muted:#6b6a65;--faint:#9a9890;--line:rgba(0,0,0,.09);--line-strong:rgba(0,0,0,.22);--fill:#1D9E75;--house:#534AB7;--ok-bg:#e3f4ec;--ok:#0f6e56;--warn-bg:#faeeda;--warn:#854f0b;--err-bg:#fcebeb;--err:#a32d2d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1c1b;--card:#262624;--soft:#30302d;--text:#f1efe8;--muted:#b4b2a9;--faint:#888780;--line:rgba(255,255,255,.1);--line-strong:rgba(255,255,255,.28);--fill:#2fb589;--house:#8f88e6;--ok-bg:#0d3a2e;--ok:#9fe1cb;--warn-bg:#412402;--warn:#fac775;--err-bg:#501313;--err:#f7c1c1}}
+:root[data-theme="dark"]{--bg:#1c1c1b;--card:#262624;--soft:#30302d;--text:#f1efe8;--muted:#b4b2a9;--faint:#888780;--line:rgba(255,255,255,.1);--line-strong:rgba(255,255,255,.28);--fill:#2fb589;--house:#8f88e6;--ok-bg:#0d3a2e;--ok:#9fe1cb;--warn-bg:#412402;--warn:#fac775;--err-bg:#501313;--err:#f7c1c1}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:440px;margin:0 auto;padding:20px 16px 40px}
+.card{background:var(--card);border:.5px solid var(--line);border-radius:16px;padding:20px;margin-bottom:14px}
+h1{font-size:22px;font-weight:600;margin:2px 0 0}
+h2{font-size:17px;font-weight:600;margin:0 0 10px}
+.eyebrow{font-size:13px;color:var(--muted);margin:0}
+.small{font-size:12px;color:var(--faint);margin:2px 0 0}
+.row{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;gap:8px}
+.muted{color:var(--muted)}
+.therm-wrap{display:flex;gap:18px;margin-top:18px}
+.therm{position:relative;width:128px;height:300px;flex-shrink:0}
+.tube{position:absolute;left:0;top:0;bottom:0;width:38px;border-radius:19px;background:var(--soft);border:.5px solid var(--line);overflow:hidden}
+.mercury{position:absolute;left:0;right:0;bottom:0;height:0;background:var(--fill);transition:height .9s ease}
+.mark{position:absolute;left:32px;right:0;display:flex;align-items:center;gap:6px;transform:translateY(50%);font-size:12px;color:var(--muted);white-space:nowrap}
+.mark span.tick{width:12px;border-top:1px solid var(--line-strong)}
+.mark.done{color:var(--ok)}
+.mark.goal{color:var(--text);font-weight:600}
+.stats{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0}
+.big{font-size:38px;font-weight:600;line-height:1.05;margin:0}
+.tile{background:var(--soft);border-radius:10px;padding:10px 12px}
+.tile p{margin:0}
+.tile .lbl{font-size:12px;color:var(--muted)}
+.tile .val{font-size:18px;font-weight:600}
+.pill{border-radius:10px;padding:8px 12px;font-size:13px;margin:0}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}
+.pill.warn{background:var(--warn-bg);color:var(--warn)}
+.pill.neutral{background:var(--soft);color:var(--muted)}
+.sep{border-top:.5px solid var(--line);margin-top:16px;padding-top:12px}
+.bar{height:10px;border-radius:5px;background:var(--soft);overflow:hidden;margin:6px 0 4px}
+.bar.big{height:14px;border-radius:7px}
+.bar>div{height:100%;width:0;background:var(--fill);border-radius:inherit;transition:width .9s ease}
+.bar.house>div{background:var(--house)}
+.pot{margin-bottom:14px}
+.pot:last-child{margin-bottom:0}
+.hist{font-size:14px}
+.hist div{display:flex;justify-content:space-between;padding:4px 0}
+.notice{border-radius:12px;padding:14px;font-size:14px;line-height:1.5;margin-bottom:14px}
+.notice.err{background:var(--err-bg);color:var(--err)}
+.notice.info{background:var(--soft);color:var(--muted)}
+footer{text-align:center;font-size:12px;color:var(--faint);margin-top:8px}
+button.link{background:none;border:0;color:var(--muted);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
+</style>
+</head>
+<body>
+<main>
+  <div id="notice"></div>
+
+  <section class="card">
+    <p class="eyebrow">Petra and Darren</p>
+    <h1>Our safety net</h1>
+    <p class="small" id="updated">Loading…</p>
+
+    <div class="therm-wrap">
+      <div class="therm" aria-hidden="true">
+        <div class="tube"><div class="mercury" id="mercury"></div></div>
+        <div id="marks"></div>
+      </div>
+      <div class="stats">
+        <div>
+          <p class="big" id="pct">–</p>
+          <p class="eyebrow">of our 90,000 Kč goal</p>
+        </div>
+        <div class="tile"><p class="lbl">Saved</p><p class="val" id="saved">–</p></div>
+        <div class="tile"><p class="lbl">Essentials covered</p><p class="val" id="months">–</p></div>
+        <p class="pill neutral" id="vsplan">–</p>
+      </div>
+    </div>
+
+    <div class="sep">
+      <div class="row"><span class="muted">Next</span><span id="next">–</span></div>
+      <div class="row" style="margin-top:4px"><span class="muted">Goal reached</span><span id="goaldate">–</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>House fund</h2>
+    <div class="row"><span id="houseAmt">–</span><span id="housePct" style="font-weight:600">–</span></div>
+    <div class="bar big house"><div id="houseBar"></div></div>
+    <p class="small" id="houseNote">–</p>
+  </section>
+
+  <section class="card">
+    <h2 style="margin-bottom:2px">Pots</h2>
+    <p class="small" style="margin:0 0 14px">Yearly target, starts again every January</p>
+    <div id="pots"></div>
+  </section>
+
+  <section class="card">
+    <h2>History</h2>
+    <div class="hist" id="history"><p class="small">No entries yet.</p></div>
+  </section>
+
+  <footer>Updated monthly around the 13th · <button class="link" id="reload">Refresh</button></footer>
+</main>
+
+<script>
+const SHEET_ID = "1z8c4szzUWjCxsQbOJG7rWNH6L0gdKWZxZSLLC3Mp47k";
+const CSV_URL = "https://docs.google.com/spreadsheets/d/" + SHEET_ID + "/gviz/tq?tqx=out:csv";
+
+const GOAL = 90000;
+const ESSENTIALS = 20263;
+const HOUSE_GOAL = 1500000;
+const MONTHLY_SAVING = 34410;
+
+const MILESTONES = [
+  { label: "1 month",  amount: 1 * ESSENTIALS, planned: "Feb 2027" },
+  { label: "2 months", amount: 2 * ESSENTIALS, planned: "Feb 2027" },
+  { label: "3 months", amount: 3 * ESSENTIALS, planned: "Mar 2027" },
+  { label: "4 months", amount: 4 * ESSENTIALS, planned: "Mar 2027" },
+  { label: "Goal 90k", amount: GOAL,           planned: "Apr 2027", goal: true }
+];
+
+const POTS = [
+  { key: "UK visits",    label: "UK visits",    target: 24000 },
+  { key: "Holiday",      label: "Holiday",      target: 21600 },
+  { key: "Unexpected",   label: "Unexpected",   target: 24000 },
+  { key: "Car",          label: "Car",          target: 9600 },
+  { key: "Yearly bills", label: "Yearly bills", target: 3600 },
+  { key: "Taxes",        label: "Taxes",        target: 21800, note: "Paid each spring for the year before" }
+];
+
+const fmt = n => Math.round(n).toLocaleString("en-GB");
+const kc = n => fmt(n) + " Kč";
+const monthName = d => d.toLocaleDateString("en-GB", { month: "short", year: "numeric" });
+const dayName = d => d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+
+function planReserve(date) {
+  const steps = [[2027,0,16,17410],[2027,1,16,MONTHLY_SAVING],[2027,2,16,MONTHLY_SAVING],[2027,3,16,MONTHLY_SAVING]];
+  let total = 0;
+  for (const [y,m,d,v] of steps) if (date >= new Date(y,m,d)) total += v;
+  return Math.min(total, GOAL);
+}
+
+function planHouse(date) {
+  const start = new Date(2027,3,16);
+  if (date < start) return 0;
+  let total = 17410 + 3 * MONTHLY_SAVING - GOAL;
+  let d = new Date(2027,4,16);
+  while (d <= date) { total += MONTHLY_SAVING; d = new Date(d.getFullYear(), d.getMonth() + 1, 16); }
+  return total;
+}
+
+function parseCSV(text) {
+  const rows = []; let row = []; let cell = ""; let q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"' && text[i+1] === '"') { cell += '"'; i++; }
+      else if (c === '"') q = false;
+      else cell += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i+1] === "\n") i++;
+      row.push(cell); rows.push(row); row = []; cell = "";
+    } else cell += c;
+  }
+  if (cell !== "" || row.length) { row.push(cell); rows.push(row); }
+  return rows.filter(r => r.some(c => c.trim() !== ""));
+}
+
+function parseNum(s) {
+  if (s == null) return null;
+  s = String(s).replace(/[\s  ]|Kč|CZK/gi, "");
+  if (s === "") return null;
+  if (/^-?\d{1,3}(,\d{3})+(\.\d+)?$/.test(s)) s = s.replace(/,/g, "");
+  else if (/^-?\d{1,3}(\.\d{3})+(,\d+)?$/.test(s)) s = s.replace(/\./g, "").replace(",", ".");
+  else if (/^-?\d+,\d{1,2}$/.test(s)) s = s.replace(",", ".");
+  const n = Number(s);
+  return isFinite(n) ? n : null;
+}
+
+function parseDate(s) {
+  s = String(s || "").trim();
+  let m;
+  if ((m = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/))) return new Date(+m[1], +m[2]-1, +m[3]);
+  if ((m = s.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})/))) return new Date(+m[3], +m[2]-1, +m[1]);
+  if ((m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/))) return new Date(+m[3], +m[1]-1, +m[2]);
+  if ((m = s.match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})\)/))) return new Date(+m[1], +m[2], +m[3]);
+  return null;
+}
+
+function notice(kind, html) {
+  document.getElementById("notice").innerHTML = html ? '<div class="notice ' + kind + '">' + html + "</div>" : "";
+}
+
+function renderMarks(balance) {
+  document.getElementById("marks").innerHTML = MILESTONES.slice().reverse().map(m => {
+    const done = balance >= m.amount;
+    const cls = "mark" + (m.goal ? " goal" : "") + (done && !m.goal ? " done" : "");
+    return '<div class="' + cls + '" style="bottom:' + (m.amount / GOAL * 100) + '%"><span class="tick"></span>' + (done ? "✓ " : "") + m.label + "</div>";
+  }).join("");
+}
+
+function render(entries) {
+  const latest = entries[entries.length - 1];
+  const balance = latest ? latest.values["Safety net"] || 0 : 0;
+  const date = latest ? latest.date : new Date();
+
+  document.getElementById("updated").textContent = latest ? "Updated " + dayName(latest.date) : "No entries yet";
+
+  const pct = Math.min(balance / GOAL, 1);
+  requestAnimationFrame(() => { document.getElementById("mercury").style.height = (pct * 100) + "%"; });
+  renderMarks(balance);
+  document.getElementById("pct").textContent = Math.round(balance / GOAL * 100) + "%";
+  document.getElementById("saved").textContent = kc(balance);
+  document.getElementById("months").textContent = (balance / ESSENTIALS).toFixed(1) + " months";
+
+  const vs = document.getElementById("vsplan");
+  const plan = planReserve(date);
+  const diff = balance - plan;
+  if (!latest) { vs.className = "pill neutral"; vs.textContent = "Add your first entry to the sheet"; }
+  else if (balance >= GOAL) { vs.className = "pill ok"; vs.textContent = "Safety net is full"; }
+  else if (plan === 0) { vs.className = "pill neutral"; vs.textContent = "Saving starts January 2027"; }
+  else if (Math.abs(diff) <= 500) { vs.className = "pill ok"; vs.textContent = "Right on plan"; }
+  else if (diff > 0) { vs.className = "pill ok"; vs.textContent = fmt(diff) + " ahead of plan"; }
+  else { vs.className = "pill warn"; vs.textContent = fmt(-diff) + " behind plan"; }
+
+  const next = MILESTONES.find(m => balance < m.amount);
+  document.getElementById("next").textContent = next ? next.label + " (" + fmt(next.amount) + ") · planned " + next.planned : "All milestones reached";
+  document.getElementById("goaldate").textContent = balance >= GOAL ? "Done" : "planned Apr 2027";
+
+  const house = latest ? latest.values["House fund"] || 0 : 0;
+  const hp = house / HOUSE_GOAL * 100;
+  document.getElementById("houseAmt").textContent = kc(house) + " of " + fmt(HOUSE_GOAL);
+  document.getElementById("housePct").textContent = (hp < 10 ? hp.toFixed(1) : Math.round(hp)) + "%";
+  requestAnimationFrame(() => { document.getElementById("houseBar").style.width = Math.min(Math.max(hp, house > 0 ? 1 : 0), 100) + "%"; });
+  const hPlan = planHouse(date);
+  let hNote;
+  if (house === 0 && balance < GOAL) hNote = "Starts when the safety net is full · planned Apr 2027";
+  else if (hPlan === 0) hNote = "Saving about " + fmt(MONTHLY_SAVING) + " Kč a month";
+  else {
+    const hd = house - hPlan;
+    hNote = Math.abs(hd) <= 1000 ? "Right on plan" : (hd > 0 ? fmt(hd) + " ahead of plan" : fmt(-hd) + " behind plan");
+    const left = Math.max(HOUSE_GOAL - house, 0);
+    const eta = new Date(date.getFullYear(), date.getMonth() + Math.ceil(left / MONTHLY_SAVING), 1);
+    hNote += " · goal around " + monthName(eta);
+  }
+  document.getElementById("houseNote").textContent = hNote;
+
+  document.getElementById("pots").innerHTML = POTS.map(p => {
+    const v = latest ? latest.values[p.key] || 0 : 0;
+    const pc = Math.round(v / p.target * 100);
+    return '<div class="pot"><div class="row"><span>' + p.label + '</span><span class="muted">' + fmt(v) + " / " + fmt(p.target) + ' · <b style="color:var(--text)">' + pc + "%</b></span></div>" +
+      '<div class="bar"><div style="width:' + Math.min(pc, 100) + '%"></div></div>' +
+      (p.note ? '<p class="small">' + p.note + "</p>" : "") + "</div>";
+  }).join("");
+
+  if (entries.length) {
+    document.getElementById("history").innerHTML = entries.slice(-6).reverse().map(e =>
+      "<div><span>" + dayName(e.date) + "</span><span>" + kc(e.values["Safety net"] || 0) + "</span></div>").join("");
+  }
+}
+
+async function load() {
+  notice("", "");
+  try {
+    const res = await fetch(CSV_URL + "&cachebust=" + Date.now());
+    const text = await res.text();
+    if (!res.ok || /^\s*</.test(text)) throw new Error("not shared");
+    const rows = parseCSV(text);
+    const header = rows.shift().map(h => h.trim());
+    const entries = rows.map(r => {
+      const values = {};
+      header.forEach((h, i) => { if (i > 0) values[h] = parseNum(r[i]); });
+      return { date: parseDate(r[0]), values };
+    }).filter(e => e.date && e.values["Safety net"] != null).sort((a, b) => a.date - b.date);
+    render(entries);
+  } catch (e) {
+    render([]);
+    notice("err", "Couldn't read the data sheet. Check that it's shared as “Anyone with the link can view”.");
+  }
+}
+
+document.getElementById("reload").addEventListener("click", load);
+load();
+</script>
+</body>
+</html>
