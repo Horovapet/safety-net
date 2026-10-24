@@ -339,6 +339,7 @@ async function load() {
 }
 
 document.getElementById("reload").addEventListener("click", load);
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 load();
 </script>
 </body>
