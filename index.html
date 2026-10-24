@@ -3,17 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#fbf6ec" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1c1c1b" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Safety net">
 <meta name="robots" content="noindex">
 <title>Our safety net</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='24' y='4' width='16' height='44' rx='8' fill='%23d9f2e8'/%3E%3Crect x='28' y='22' width='8' height='26' fill='%231D9E75'/%3E%3Ccircle cx='32' cy='50' r='11' fill='%231D9E75'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
 <style>
-:root{--bg:#f7f6f2;--card:#ffffff;--soft:#f1efe8;--text:#1f1e1c;--muted:#6b6a65;--faint:#9a9890;--line:rgba(0,0,0,.09);--line-strong:rgba(0,0,0,.22);--fill:#1D9E75;--house:#534AB7;--ok-bg:#e3f4ec;--ok:#0f6e56;--warn-bg:#faeeda;--warn:#854f0b;--err-bg:#fcebeb;--err:#a32d2d}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1c1b;--card:#262624;--soft:#30302d;--text:#f1efe8;--muted:#b4b2a9;--faint:#888780;--line:rgba(255,255,255,.1);--line-strong:rgba(255,255,255,.28);--fill:#2fb589;--house:#8f88e6;--ok-bg:#0d3a2e;--ok:#9fe1cb;--warn-bg:#412402;--warn:#fac775;--err-bg:#501313;--err:#f7c1c1}}
-:root[data-theme="dark"]{--bg:#1c1c1b;--card:#262624;--soft:#30302d;--text:#f1efe8;--muted:#b4b2a9;--faint:#888780;--line:rgba(255,255,255,.1);--line-strong:rgba(255,255,255,.28);--fill:#2fb589;--house:#8f88e6;--ok-bg:#0d3a2e;--ok:#9fe1cb;--warn-bg:#412402;--warn:#fac775;--err-bg:#501313;--err:#f7c1c1}
+:root{--sky-top:#dce8ee;--sky-bot:#f5ede0;--mtn-far:#c3cfd2;--mtn-mid:#9fb2ab;--forest:#5d786b;--meadow-1:#b6c79a;--meadow-2:#9db37f;--spruce:#3f5b4d;--birch:#a9be7a;--path:#e3d6bd;--bg:#fbf6ec;--card:#ffffff;--soft:#f4efe4;--text:#1f1e1c;--muted:#6b6a65;--faint:#9a9890;--line:rgba(0,0,0,.09);--line-strong:rgba(0,0,0,.22);--fill:#1D9E75;--house:#534AB7;--ok-bg:#e3f4ec;--ok:#0f6e56;--warn-bg:#faeeda;--warn:#854f0b;--err-bg:#fcebeb;--err:#a32d2d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky-top:#1b2a35;--sky-bot:#2f2a24;--mtn-far:#33424a;--mtn-mid:#2c3d38;--forest:#22362d;--meadow-1:#33452a;--meadow-2:#2a3a22;--spruce:#1b2e24;--birch:#4d5f33;--path:#4a4234;--bg:#1c1c1b;--card:#262624;--soft:#30302d;--text:#f1efe8;--muted:#b4b2a9;--faint:#888780;--line:rgba(255,255,255,.1);--line-strong:rgba(255,255,255,.28);--fill:#2fb589;--house:#8f88e6;--ok-bg:#0d3a2e;--ok:#9fe1cb;--warn-bg:#412402;--warn:#fac775;--err-bg:#501313;--err:#f7c1c1}}
+:root[data-theme="dark"]{--sky-top:#1b2a35;--sky-bot:#2f2a24;--mtn-far:#33424a;--mtn-mid:#2c3d38;--forest:#22362d;--meadow-1:#33452a;--meadow-2:#2a3a22;--spruce:#1b2e24;--birch:#4d5f33;--path:#4a4234;--bg:#1c1c1b;--card:#262624;--soft:#30302d;--text:#f1efe8;--muted:#b4b2a9;--faint:#888780;--line:rgba(255,255,255,.1);--line-strong:rgba(255,255,255,.28);--fill:#2fb589;--house:#8f88e6;--ok-bg:#0d3a2e;--ok:#9fe1cb;--warn-bg:#412402;--warn:#fac775;--err-bg:#501313;--err:#f7c1c1}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
 main{max-width:440px;margin:0 auto;padding:20px 16px 40px}
@@ -27,7 +29,7 @@ h2{font-size:17px;font-weight:600;margin:0 0 10px}
 .therm-wrap{display:flex;gap:18px;margin-top:18px}
 .therm{position:relative;width:128px;height:300px;flex-shrink:0}
 .tube{position:absolute;left:0;top:0;bottom:0;width:38px;border-radius:19px;background:var(--soft);border:.5px solid var(--line);overflow:hidden}
-.mercury{position:absolute;left:0;right:0;bottom:0;height:0;background:var(--fill);transition:height .9s ease}
+.mercury{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(to top,#0F6E56,#1D9E75 55%,#5DCAA5);transition:height .9s ease}
 .mark{position:absolute;left:32px;right:0;display:flex;align-items:center;gap:6px;transform:translateY(50%);font-size:12px;color:var(--muted);white-space:nowrap}
 .mark span.tick{width:12px;border-top:1px solid var(--line-strong)}
 .mark.done{color:var(--ok)}
@@ -46,8 +48,14 @@ h2{font-size:17px;font-weight:600;margin:0 0 10px}
 .bar{height:10px;border-radius:5px;background:var(--soft);overflow:hidden;margin:6px 0 4px}
 .bar.big{height:14px;border-radius:7px}
 .bar>div{height:100%;width:0;background:var(--fill);border-radius:inherit;transition:width .9s ease}
-.bar.house>div{background:var(--house)}
-.pot{margin-bottom:14px}
+.bar.house>div{background:linear-gradient(90deg,#534AB7,#7F77DD)}
+.pot{margin-bottom:14px;display:flex;gap:12px;align-items:center}
+.pot .ico{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.pot .body{flex:1;min-width:0}
+.hero{margin:-20px -20px 16px;border-radius:16px 16px 0 0;overflow:hidden;line-height:0}
+.hero svg{width:100%;height:auto;display:block}
+h2 svg.i{vertical-align:-4px;margin-right:6px}
+.cheer{font-size:13px;color:var(--muted);margin:10px 0 0}
 .pot:last-child{margin-bottom:0}
 .hist{font-size:14px}
 .hist div{display:flex;justify-content:space-between;padding:4px 0}
@@ -63,6 +71,41 @@ button.link{background:none;border:0;color:var(--muted);font:inherit;text-decora
   <div id="notice"></div>
 
   <section class="card">
+<div class="hero" aria-hidden="true"><svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sky-top)"/><stop offset="1" stop-color="var(--sky-bot)"/></linearGradient>
+        <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dfa8"/><stop offset="1" stop-color="#e2b46a"/></linearGradient>
+        <linearGradient id="meadow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--meadow-1)"/><stop offset="1" stop-color="var(--meadow-2)"/></linearGradient>
+      </defs>
+      <rect width="400" height="140" fill="url(#sky)"/>
+      <circle cx="96" cy="44" r="16" fill="#f6e3b8" opacity=".8"/>
+      <path d="M0 92 L38 70 L70 80 L118 52 L160 74 L196 62 L240 82 L292 58 L338 76 L400 64 V140 H0Z" fill="var(--mtn-far)"/>
+      <path d="M0 108 Q60 86 130 98 T260 92 T400 96 V140 H0Z" fill="var(--mtn-mid)"/>
+      <g fill="var(--forest)"><path d="M4 103 l5 -13 l5 13z"/><path d="M13 101 l5 -13 l5 13z"/><path d="M22 104 l5 -13 l5 13z"/><path d="M31 102 l5 -13 l5 13z"/><path d="M40 100 l5 -13 l5 13z"/><path d="M49 103 l5 -13 l5 13z"/><path d="M58 101 l5 -13 l5 13z"/><path d="M67 104 l5 -13 l5 13z"/><path d="M76 102 l5 -13 l5 13z"/><path d="M85 100 l5 -13 l5 13z"/><path d="M94 103 l5 -13 l5 13z"/><path d="M103 101 l5 -13 l5 13z"/><path d="M112 104 l5 -13 l5 13z"/><path d="M121 102 l5 -13 l5 13z"/><path d="M130 100 l5 -13 l5 13z"/><path d="M139 103 l5 -13 l5 13z"/><path d="M148 101 l5 -13 l5 13z"/><path d="M157 104 l5 -13 l5 13z"/><path d="M166 102 l5 -13 l5 13z"/><path d="M175 100 l5 -13 l5 13z"/><path d="M184 103 l5 -13 l5 13z"/><path d="M193 101 l5 -13 l5 13z"/><path d="M202 104 l5 -13 l5 13z"/><path d="M211 102 l5 -13 l5 13z"/><path d="M220 100 l5 -13 l5 13z"/><path d="M229 103 l5 -13 l5 13z"/><path d="M238 101 l5 -13 l5 13z"/><path d="M247 104 l5 -13 l5 13z"/><path d="M256 102 l5 -13 l5 13z"/><path d="M265 100 l5 -13 l5 13z"/><path d="M274 103 l5 -13 l5 13z"/><path d="M283 101 l5 -13 l5 13z"/><path d="M292 104 l5 -13 l5 13z"/><path d="M301 102 l5 -13 l5 13z"/><path d="M310 100 l5 -13 l5 13z"/><path d="M319 103 l5 -13 l5 13z"/><path d="M328 101 l5 -13 l5 13z"/><path d="M337 104 l5 -13 l5 13z"/><path d="M346 102 l5 -13 l5 13z"/><path d="M355 100 l5 -13 l5 13z"/><path d="M364 103 l5 -13 l5 13z"/><path d="M373 101 l5 -13 l5 13z"/><path d="M382 104 l5 -13 l5 13z"/><path d="M391 102 l5 -13 l5 13z"/></g>
+      <path d="M0 122 Q120 110 240 118 T400 116 V140 H0Z" fill="url(#meadow)"/>
+      <ellipse cx="292" cy="125" rx="66" ry="4" fill="#000" opacity=".12"/>
+      <g>
+        <path d="M290 92 L342 96 L342 124 L290 122 Z" fill="#a9784a"/>
+        <g stroke="#8a5f38" stroke-width=".6"><line x1="295.0" y1="92.4" x2="295.0" y2="122.2"/><line x1="300.0" y1="92.8" x2="300.0" y2="122.4"/><line x1="305.0" y1="93.2" x2="305.0" y2="122.6"/><line x1="310.0" y1="93.6" x2="310.0" y2="122.8"/><line x1="315.0" y1="94.0" x2="315.0" y2="123.0"/><line x1="320.0" y1="94.4" x2="320.0" y2="123.2"/><line x1="325.0" y1="94.8" x2="325.0" y2="123.4"/><line x1="330.0" y1="95.2" x2="330.0" y2="123.6"/><line x1="335.0" y1="95.6" x2="335.0" y2="123.8"/></g>
+        <path d="M240 122 V92 L265 64 L290 92 V122 Z" fill="#c8945f"/>
+        <g stroke="#b07f4d" stroke-width=".5"><line x1="244" y1="87" x2="244" y2="122"/><line x1="248" y1="83" x2="248" y2="122"/><line x1="252" y1="78" x2="252" y2="122"/><line x1="256" y1="74" x2="256" y2="122"/><line x1="260" y1="69" x2="260" y2="122"/><line x1="264" y1="65" x2="264" y2="122"/><line x1="268" y1="67" x2="268" y2="122"/><line x1="272" y1="71" x2="272" y2="122"/><line x1="276" y1="76" x2="276" y2="122"/><line x1="280" y1="80" x2="280" y2="122"/><line x1="284" y1="85" x2="284" y2="122"/><line x1="288" y1="89" x2="288" y2="122"/></g>
+        <path d="M249 121 V96 L265 78 L281 96 V121 Z" fill="url(#glass)"/>
+        <path d="M265 78 V121 M249 104 H281" stroke="#3a3f42" stroke-width="1.3" fill="none"/>
+        <path d="M249 121 V96 L265 78 L281 96 V121" stroke="#3a3f42" stroke-width="1.6" fill="none"/>
+        <path d="M265 62 L319 66 L346 97 L292 93 Z" fill="#3a3f42"/>
+        <path d="M236 95 L265 61.5 L294 95" stroke="#2b2f31" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect x="300" y="101" width="16" height="9" fill="url(#glass)" stroke="#3a3f42" stroke-width="1.2"/>
+        <rect x="322" y="102" width="12" height="9" fill="url(#glass)" stroke="#3a3f42" stroke-width="1.2"/>
+        <rect x="238" y="121" width="106" height="3" fill="#6f6a62"/>
+      </g>
+      <g fill="var(--spruce)">
+        <path d="M364 126 l9 -40 l9 40z"/><path d="M366 112 l7 -30 l7 30z"/>
+        <path d="M384 128 l6 -28 l6 28z"/>
+        <path d="M206 124 l6 -24 l6 24z"/>
+      </g>
+      <g><rect x="225" y="100" width="1.6" height="24" fill="#e8e4dc"/><rect x="225" y="106" width="1.6" height="1.2" fill="#555"/><ellipse cx="226" cy="98" rx="7" ry="11" fill="var(--birch)" opacity=".9"/></g>
+      <path d="M265 124 Q250 132 236 140 H252 Q260 132 268 124Z" fill="var(--path)"/>
+    </svg></div>
     <p class="eyebrow">Petra and Darren</p>
     <h1>Our safety net</h1>
     <p class="small" id="updated">Loading…</p>
@@ -80,6 +123,7 @@ button.link{background:none;border:0;color:var(--muted);font:inherit;text-decora
         <div class="tile"><p class="lbl">Saved</p><p class="val" id="saved">–</p></div>
         <div class="tile"><p class="lbl">Essentials covered</p><p class="val" id="months">–</p></div>
         <p class="pill neutral" id="vsplan">–</p>
+        <p class="cheer" id="cheer"></p>
       </div>
     </div>
 
@@ -90,20 +134,20 @@ button.link{background:none;border:0;color:var(--muted);font:inherit;text-decora
   </section>
 
   <section class="card">
-    <h2>House fund</h2>
+    <h2><svg class="i" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>  <path d="M21 12l-9 -9l-9 9h2v7a2 2 0 0 0 2 2h6" />  <path d="M9 21v-6a2 2 0 0 1 2 -2h2c.39 0 .754 .112 1.061 .304" />  <path d="M19 21.5l2.518 -2.58a1.74 1.74 0 0 0 0 -2.413a1.627 1.627 0 0 0 -2.346 0l-.168 .172l-.168 -.172a1.627 1.627 0 0 0 -2.346 0a1.74 1.74 0 0 0 0 2.412l2.51 2.59z" /></svg>House fund</h2>
     <div class="row"><span id="houseAmt">–</span><span id="housePct" style="font-weight:600">–</span></div>
     <div class="bar big house"><div id="houseBar"></div></div>
     <p class="small" id="houseNote">–</p>
   </section>
 
   <section class="card">
-    <h2 style="margin-bottom:2px">Pots</h2>
+    <h2 style="margin-bottom:2px"><svg class="i" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4537E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>  <path d="M15 11v.01" />  <path d="M5.173 8.378a3 3 0 1 1 4.656 -1.377" />  <path d="M16 4v3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342c-.336 .95 -.907 1.8 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3h0z" /></svg>Pots</h2>
     <p class="small" style="margin:0 0 14px">Yearly target, starts again every January</p>
     <div id="pots"></div>
   </section>
 
   <section class="card">
-    <h2>History</h2>
+    <h2><svg class="i" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>  <path d="M12 8l0 4l2 2" />  <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" /></svg>History</h2>
     <div class="hist" id="history"><p class="small">No entries yet.</p></div>
   </section>
 
@@ -127,13 +171,14 @@ const MILESTONES = [
   { label: "Goal 90k", amount: GOAL,           planned: "Apr 2027", goal: true }
 ];
 
+const ICONS = {"plane": "<path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/>  <path d=\"M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z\" />", "beach": "<path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/>  <path d=\"M17.553 16.75a7.5 7.5 0 0 0 -10.606 0\" />  <path d=\"M18 3.804a6 6 0 0 0 -8.196 2.196l10.392 6a6 6 0 0 0 -2.196 -8.196z\" />  <path d=\"M16.732 10c1.658 -2.87 2.225 -5.644 1.268 -6.196c-.957 -.552 -3.075 1.326 -4.732 4.196\" />  <path d=\"M15 9l-3 5.196\" />  <path d=\"M3 19.25a2.4 2.4 0 0 1 1 -.25a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 1 .25\" />", "umbrella": "<path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/>  <path d=\"M4 12a8 8 0 0 1 16 0z\" />  <path d=\"M12 12v6a2 2 0 0 0 4 0\" />", "car": "<path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/>  <path d=\"M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0\" />  <path d=\"M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0\" />  <path d=\"M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5\" />", "calendar-event": "<path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/>  <path d=\"M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z\" />  <path d=\"M16 3l0 4\" />  <path d=\"M8 3l0 4\" />  <path d=\"M4 11l16 0\" />  <path d=\"M8 15h2v2h-2z\" />", "receipt-tax": "<path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/>  <path d=\"M9 14l6 -6\" />  <circle cx=\"9.5\" cy=\"8.5\" r=\".5\" fill=\"currentColor\" />  <circle cx=\"14.5\" cy=\"13.5\" r=\".5\" fill=\"currentColor\" />  <path d=\"M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2\" />"};
 const POTS = [
-  { key: "UK visits",    label: "UK visits",    target: 24000 },
-  { key: "Holiday",      label: "Holiday",      target: 21600 },
-  { key: "Unexpected",   label: "Unexpected",   target: 24000 },
-  { key: "Car",          label: "Car",          target: 9600 },
-  { key: "Yearly bills", label: "Yearly bills", target: 3600 },
-  { key: "Taxes",        label: "Taxes",        target: 21800, note: "Paid each spring for the year before" }
+  { key: "UK visits",    label: "UK visits",    target: 24000, icon: "plane",          color: "#378ADD", tint: "rgba(55,138,221,.15)" },
+  { key: "Holiday",      label: "Holiday",      target: 21600, icon: "beach",          color: "#D85A30", tint: "rgba(216,90,48,.15)" },
+  { key: "Unexpected",   label: "Unexpected",   target: 24000, icon: "umbrella",       color: "#BA7517", tint: "rgba(239,159,39,.18)" },
+  { key: "Car",          label: "Car",          target: 9600,  icon: "car",            color: "#7F77DD", tint: "rgba(127,119,221,.16)" },
+  { key: "Yearly bills", label: "Yearly bills", target: 3600,  icon: "calendar-event", color: "#D4537E", tint: "rgba(212,83,126,.15)" },
+  { key: "Taxes",        label: "Taxes",        target: 21800, icon: "receipt-tax",    color: "#5F8F3A", tint: "rgba(99,153,34,.16)", note: "Paid each spring for the year before" }
 ];
 
 const fmt = n => Math.round(n).toLocaleString("en-GB");
@@ -233,6 +278,9 @@ function render(entries) {
   else if (diff > 0) { vs.className = "pill ok"; vs.textContent = fmt(diff) + " ahead of plan"; }
   else { vs.className = "pill warn"; vs.textContent = fmt(-diff) + " behind plan"; }
 
+  const doneCount = MILESTONES.filter(m => balance >= m.amount).length;
+  const cheers = ["Every koruna counts. Let's go!", "First month covered. Nice start!", "Two months safe. Keep going!", "Three months. Almost there!", "Four months of calm. One last push!", "We did it! Safety net is full."];
+  document.getElementById("cheer").textContent = latest ? cheers[doneCount] : "";
   const next = MILESTONES.find(m => balance < m.amount);
   document.getElementById("next").textContent = next ? next.label + " (" + fmt(next.amount) + ") · planned " + next.planned : "All milestones reached";
   document.getElementById("goaldate").textContent = balance >= GOAL ? "Done" : "planned Apr 2027";
@@ -258,9 +306,10 @@ function render(entries) {
   document.getElementById("pots").innerHTML = POTS.map(p => {
     const v = latest ? latest.values[p.key] || 0 : 0;
     const pc = Math.round(v / p.target * 100);
-    return '<div class="pot"><div class="row"><span>' + p.label + '</span><span class="muted">' + fmt(v) + " / " + fmt(p.target) + ' · <b style="color:var(--text)">' + pc + "%</b></span></div>" +
-      '<div class="bar"><div style="width:' + Math.min(pc, 100) + '%"></div></div>' +
-      (p.note ? '<p class="small">' + p.note + "</p>" : "") + "</div>";
+    return '<div class="pot"><div class="ico" style="background:' + p.tint + ';color:' + p.color + '"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[p.icon] + '</svg></div><div class="body">' +
+      '<div class="row"><span>' + p.label + '</span><span class="muted">' + fmt(v) + " / " + fmt(p.target) + ' · <b style="color:var(--text)">' + pc + "%</b></span></div>" +
+      '<div class="bar"><div style="width:' + Math.min(pc, 100) + '%;background:' + p.color + '"></div></div>' +
+      (p.note ? '<p class="small">' + p.note + "</p>" : "") + "</div></div>";
   }).join("");
 
   if (entries.length) {
